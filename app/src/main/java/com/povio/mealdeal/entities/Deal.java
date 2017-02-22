@@ -1,14 +1,14 @@
-package com.povio.mealdeal.model;
+package com.povio.mealdeal.entities;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Kresa on 2/16/17.
  */
 
-public class Deal {
+public class Deal extends BaseEntity {
 
-    private String uid;
     private String name;
     private String shortDescription;
     private String longDescription;
@@ -19,14 +19,8 @@ public class Deal {
     private String discount;
     private double amountToSave;
     private List<Meal> meals;
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
+    private Date startDate;
+    private Date endDate;
 
     public String getName() {
         return name;
@@ -106,5 +100,21 @@ public class Deal {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

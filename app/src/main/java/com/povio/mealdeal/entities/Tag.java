@@ -1,14 +1,13 @@
-package com.povio.mealdeal.model;
+package com.povio.mealdeal.entities;
 
 /**
  * Created by Kresa on 2/16/17.
  */
 
-public class Restaurant {
+public class Tag extends BaseEntity {
 
-    private String uid;
     private String name;
-    private ContactInfo contactInfo;
+    private int type;
 
     public String getUid() {
         return uid;
@@ -26,11 +25,11 @@ public class Restaurant {
         this.name = name;
     }
 
-    public ContactInfo getContactInfo() {
-        return contactInfo;
+    public int getType() {
+        return type;
     }
 
-    public void setContactInfo(ContactInfo contactInfo) {
-        this.contactInfo = contactInfo;
+    public void setType(int type) {
+        this.type = type;
     }
 }

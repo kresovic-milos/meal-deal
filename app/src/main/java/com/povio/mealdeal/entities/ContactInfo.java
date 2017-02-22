@@ -1,4 +1,4 @@
-package com.povio.mealdeal.model;
+package com.povio.mealdeal.entities;
 
 import android.location.Location;
 
@@ -13,7 +13,8 @@ public class ContactInfo {
     private String street;
     private String city;
     private String country;
-    private Location location;
+    private double lat;
+    private double lng;
 
 
     public String getPhone() {
@@ -56,11 +57,19 @@ public class ContactInfo {
         this.country = country;
     }
 
-    public Location getLocation() {
-        return location;
+    public double getLat() {
+        return lat;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }
