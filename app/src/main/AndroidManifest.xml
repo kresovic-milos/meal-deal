@@ -2,6 +2,8 @@
 <manifest package="com.povio.mealdeal"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,7 @@
         android:name=".AppMealDeal"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.ActivitySplashScreen"
+            android:name=".ui.activities.ActivitySplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".activities.ActivityMain"
+            android:name=".ui.activities.ActivityMain"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -35,24 +37,27 @@
         </activity>
 
         <activity
-            android:name=".activities.ActivityDealDetails"
+            android:name=".ui.activities.ActivityDealDetails"
             android:label="@string/app_name"
+            android:parentActivityName=".ui.activities.ActivityMain"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
 
         <activity
-            android:name=".activities.ActivitySettings"
+            android:name=".ui.activities.ActivitySettings"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
+            android:parentActivityName=".ui.activities.ActivityMain"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
 
         <activity
-            android:name=".activities.ActivityAbout"
+            android:name=".ui.activities.ActivityAbout"
             android:label="@string/app_name"
+            android:parentActivityName=".ui.activities.ActivityMain"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
