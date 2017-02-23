@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#323232</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--chalk colors-->
+    <color name="chalk_white">#f6f4f1</color>
 </resources>
+
+    <!--Pink Chalk-->
+    <!--Hex: #f2a3bd-->
+
+    <!--Yellow Chalk-->
+    <!--Hex: #d6d963-->
+
+    <!--Turquoise Chalk-->
+    <!--Hex: #6fe7db-->
+
+    <!--Purple Chalk-->
+    <!--Hex: #c4adc9-->
+
+    <!--White Chalk-->
+    <!--Hex: #f4f4f0-->
