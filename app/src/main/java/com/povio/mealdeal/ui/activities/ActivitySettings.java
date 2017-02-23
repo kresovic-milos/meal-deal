@@ -1,4 +1,4 @@
-package com.povio.mealdeal.activities;
+package com.povio.mealdeal.ui.activities;
 
 import android.preference.PreferenceActivity;
 
@@ -7,4 +7,6 @@ import android.preference.PreferenceActivity;
  */
 
 public class ActivitySettings extends PreferenceActivity {
+
+
 }

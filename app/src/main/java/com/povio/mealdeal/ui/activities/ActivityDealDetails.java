@@ -1,4 +1,4 @@
-package com.povio.mealdeal.activities;
+package com.povio.mealdeal.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 

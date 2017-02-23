@@ -1,56 +1,53 @@
-package com.povio.mealdeal.activities;
+package com.povio.mealdeal.ui.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.povio.mealdeal.R;
-import com.povio.mealdeal.adapters.AdapterTabsMain;
+import com.povio.mealdeal.databinding.ActivityMainBinding;
+import com.povio.mealdeal.ui.adapters.AdapterTabsMain;
+import com.povio.mealdeal.utils.Constants;
+import com.povio.mealdeal.utils.FontCache;
+import com.povio.mealdeal.viewmodel.BaseViewModel;
+import com.povio.mealdeal.viewmodel.ViewModelMain;
 
-public class ActivityMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ActivityMain extends ToolbarActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ViewModelMain viewModelMain;
 
     private ActionBarDrawerToggle toggle;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setViewModel(viewModelMain);
+        super.onCreate(savedInstanceState, R.string.app_name);
+
         handleIntent(getIntent());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle(R.string.app_name);
-        }
+//        ((AppMealDeal) getApplication()).getComponent().inject(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
 
@@ -62,17 +59,29 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
+        View headerView = navigationView.getHeaderView(0);
+        TextView headerTextMeal = (TextView) headerView.findViewById(R.id.textview_drawer_header_meal);
+        headerTextMeal.setTypeface(FontCache.getTypeface(Constants.Font.THICK_1, this));
+        TextView headerTextDeal = (TextView) headerView.findViewById(R.id.textview_drawer_header_deal);
+        headerTextDeal.setTypeface(FontCache.getTypeface(Constants.Font.SKINNY_1, this));
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        setupViewPager(binding.viewpager);
+
+        binding.tabs.setupWithViewPager(binding.viewpager);
+        binding.tabs.getTabAt(AdapterTabsMain.TAB_FEED).setIcon(R.drawable.ic_view_list_white_24dp);
+        binding.tabs.getTabAt(AdapterTabsMain.TAB_MAP).setIcon(R.drawable.ic_map_white_24dp);
+    }
+
+    @Nullable
+    @Override
+    protected BaseViewModel createViewModel(@Nullable BaseViewModel.State savedViewModelState) {
+        viewModelMain = new ViewModelMain(savedViewModelState, this);
+        return viewModelMain;
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
         toggle.syncState();
     }
 
@@ -86,10 +95,9 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            search(query);
+            onSearch(query);
         }
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         AdapterTabsMain adapter = new AdapterTabsMain(getSupportFragmentManager());
@@ -106,10 +114,10 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void search(String query) {
-
-        Snackbar.make(getWindow().getDecorView().getRootView(), "Search query = " + query, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+    private void onSearch(String query) {
+        viewModelMain.onSearch(query);
+//        Snackbar.make(getWindow().getDecorView().getRootView(), "Search query = " + query, Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show();
     }
 
     @Override
@@ -129,13 +137,10 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_toggle) {
+            viewModelMain.toggleFav();
             return true;
         }
 
@@ -144,21 +149,21 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         int id = item.getItemId();
 
         if (id == R.id.drawer_deals) {
 
         } else if (id == R.id.drawer_settings) {
+            startActivity(ActivitySettings.class);
 
         } else if (id == R.id.drawer_about) {
-
+            startActivity(ActivityAbout.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

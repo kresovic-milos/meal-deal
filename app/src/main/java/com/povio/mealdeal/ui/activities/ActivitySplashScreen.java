@@ -1,4 +1,4 @@
-package com.povio.mealdeal.activities;
+package com.povio.mealdeal.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +22,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // do some work
 
         Intent intent = new Intent(this, ActivityMain.class);
         startActivity(intent);

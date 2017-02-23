@@ -1,12 +1,12 @@
-package com.povio.mealdeal.adapters;
+package com.povio.mealdeal.ui.adapters;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.povio.mealdeal.fragments.FragmentFavorites;
-import com.povio.mealdeal.fragments.FragmentMain;
+import com.povio.mealdeal.ui.fragments.FragmentDealsFeed;
+import com.povio.mealdeal.ui.fragments.FragmentDealsMap;
 
 /**
  * Created by Kresa on 2/17/17.
@@ -14,8 +14,8 @@ import com.povio.mealdeal.fragments.FragmentMain;
 
 public class AdapterTabsMain extends FragmentPagerAdapter {
 
-    private static final int DEALS_FEED = 0;
-    private static final int FAVORITE = 1;
+    public static final int TAB_FEED = 0;
+    public static final int TAB_MAP = 1;
 
     public AdapterTabsMain(FragmentManager manager) {
         super(manager);
@@ -23,13 +23,15 @@ public class AdapterTabsMain extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         switch (position) {
-            case DEALS_FEED:
-                return new FragmentMain();
-            case FAVORITE:
-                return new FragmentFavorites();
+            case TAB_FEED:
+                return new FragmentDealsFeed();
+            case TAB_MAP:
+                return new FragmentDealsMap();
+            default:
+                return null;
         }
-        return null;
     }
 
     @Override
@@ -40,12 +42,11 @@ public class AdapterTabsMain extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
-            case DEALS_FEED:
-                return "DEALS FEED";
-            case FAVORITE:
-                return "FAVORITE";
+            case TAB_FEED:
+                return "FEED";
+            case TAB_MAP:
+                return "MAP";
         }
         return null;
     }
-
 }

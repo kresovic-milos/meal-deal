@@ -1,4 +1,4 @@
-package com.povio.mealdeal.fragments;
+package com.povio.mealdeal.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 
 import com.povio.mealdeal.R;
 import com.povio.mealdeal.utils.Constants;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by Kresa on 2/16/17.
