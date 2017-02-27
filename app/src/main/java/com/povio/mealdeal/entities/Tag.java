@@ -1,11 +1,15 @@
 package com.povio.mealdeal.entities;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Kresa on 2/16/17.
  */
 
-public class Tag extends BaseEntity {
+@Parcel(Parcel.Serialization.BEAN)
+public class Tag {
 
+    private String uid;
     private String name;
     private int type;
 

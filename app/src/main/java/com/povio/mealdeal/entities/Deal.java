@@ -1,5 +1,7 @@
 package com.povio.mealdeal.entities;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,8 +9,10 @@ import java.util.List;
  * Created by Kresa on 2/16/17.
  */
 
-public class Deal extends BaseEntity {
+@Parcel(Parcel.Serialization.BEAN)
+public class Deal {
 
+    private String uid;
     private String name;
     private String shortDescription;
     private String longDescription;
@@ -21,6 +25,14 @@ public class Deal extends BaseEntity {
     private List<Meal> meals;
     private Date startDate;
     private Date endDate;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getName() {
         return name;

@@ -14,12 +14,6 @@ public abstract class ToolbarActivity extends BaseActivity {
 
     protected Toolbar toolbar;
 
-    protected void onCreate(@Nullable Bundle savedInstanceState, int titleResId) {
-        super.onCreate(savedInstanceState);
-
-        setUpActionBar(titleResId);
-    }
-
     protected void setUpActionBar(int titleResId) {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#323232</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FF5252</color>
 
     <!--chalk colors-->
     <color name="chalk_white">#f6f4f1</color>

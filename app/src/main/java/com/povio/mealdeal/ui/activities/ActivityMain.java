@@ -36,9 +36,12 @@ public class ActivityMain extends ToolbarActivity implements NavigationView.OnNa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setViewModel(viewModelMain);
-        super.onCreate(savedInstanceState, R.string.app_name);
+
+        setUpActionBar(R.string.app_name);
 
         handleIntent(getIntent());
 
@@ -156,10 +159,10 @@ public class ActivityMain extends ToolbarActivity implements NavigationView.OnNa
         if (id == R.id.drawer_deals) {
 
         } else if (id == R.id.drawer_settings) {
-            startActivity(ActivitySettings.class);
+            startChildActivity(ActivitySettings.class);
 
         } else if (id == R.id.drawer_about) {
-            startActivity(ActivityAbout.class);
+            startChildActivity(ActivityAbout.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

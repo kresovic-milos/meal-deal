@@ -1,6 +1,6 @@
 package com.povio.mealdeal.entities;
 
-import android.nfc.Tag;
+import org.parceler.Parcel;
 
 import java.util.List;
 
@@ -8,12 +8,22 @@ import java.util.List;
  * Created by Kresa on 2/16/17.
  */
 
-public class Meal extends BaseEntity {
+@Parcel(Parcel.Serialization.BEAN)
+public class Meal {
 
+    private String uid;
     private String name;
     private String description;
     private String photoUrl;
     private List<Tag> tags;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getName() {
         return name;

@@ -11,7 +11,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.observables.ConnectableObservable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -27,13 +30,13 @@ public class ModuleRESTClient {
         return new Retrofit.Builder()
                 .baseUrl(Constants.ApiUrls.BASE)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build();
     }
 
     @Provides
     @Singleton
-    DealsRetrofitService provideDealsService(@NonNull Retrofit retrofit) {
+    DealsRetrofitService provideDealsObservable(@NonNull Retrofit retrofit) {
         return retrofit.create(DealsRetrofitService.class);
     }
 

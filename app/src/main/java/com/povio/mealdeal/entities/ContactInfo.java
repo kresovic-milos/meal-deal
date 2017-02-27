@@ -2,10 +2,13 @@ package com.povio.mealdeal.entities;
 
 import android.location.Location;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Kresa on 2/16/17.
  */
 
+@Parcel(Parcel.Serialization.BEAN)
 public class ContactInfo {
 
     private String phone;

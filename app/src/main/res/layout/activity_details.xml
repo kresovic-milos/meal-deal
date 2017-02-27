@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel" type="com.povio.mealdeal.viewmodel.ViewModelDetails"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:title="@string/about"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:logo="@drawable/app_logo"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <ScrollView
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:background="@drawable/planks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageview_deal"
+                    android:scaleType="fitCenter"
+                    android:alpha="1"
+                    app:imageUrl="@{viewModel.getDealPhotoUrl}"
+                    android:src="@drawable/deal_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/layout_blackboard"
+                    android:layout_below="@id/imageview_deal"
+                    android:paddingBottom="20dp"
+                    android:layout_marginTop="-60dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:transitionName="deal"
+                    tools:targetApi="lollipop">
+
+                    <ImageView
+                        android:id="@+id/imageview_blackboard"
+                        android:scaleType="fitXY"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/blackboard_small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:padding="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:id="@+id/textview_deal_title"
+                            android:text="@{viewModel.getTitle}"
+                            android:textSize="36sp"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/chalk_white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/textview_short_description"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/chalk_white"
+                            android:text="@{viewModel.getShortDescription}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

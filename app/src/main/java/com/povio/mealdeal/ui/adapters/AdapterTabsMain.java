@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.povio.mealdeal.ui.fragments.FragmentDealsFeed;
 import com.povio.mealdeal.ui.fragments.FragmentDealsMap;
 
+import io.reactivex.observables.ConnectableObservable;
+
 /**
  * Created by Kresa on 2/17/17.
  */

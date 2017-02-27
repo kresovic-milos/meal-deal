@@ -1,17 +1,29 @@
 package com.povio.mealdeal.entities;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
 /**
  * Created by Kresa on 2/16/17.
  */
 
-public class Restaurant extends BaseEntity {
+@Parcel(Parcel.Serialization.BEAN)
+public class Restaurant {
 
+    private String uid;
     private String name;
     private ContactInfo contactInfo;
     private Date openAt;
     private Date closeAt;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getName() {
         return name;

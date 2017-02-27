@@ -55,7 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void startActivity(Class activityClass) {
+    protected void startChildActivity(Class activityClass) {
         Intent intent = new Intent(this, activityClass);
         startActivity(intent);
     }

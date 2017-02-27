@@ -1,10 +1,16 @@
 package com.povio.mealdeal.viewmodel;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
+
+import com.povio.mealdeal.BR;
+import com.povio.mealdeal.utils.Constants;
 
 /**
  * Created by Kresa on 2/22/17.

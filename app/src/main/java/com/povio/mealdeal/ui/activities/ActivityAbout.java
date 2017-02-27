@@ -25,7 +25,9 @@ public class ActivityAbout extends ToolbarActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.string.about);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        setUpActionBar(R.string.about);
     }
 }

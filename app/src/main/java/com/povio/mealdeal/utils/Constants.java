@@ -23,9 +23,10 @@ public class Constants {
 
     public static class Font {
         public static final String THICK_1 = "SmudgieCrayon.ttf";
-        public static final String THICK_2 = "";
+        public static final String THICK_2 = "KraftNineDEMO.ttf";
+
         public static final String SKINNY_1 = "ChalkLine.ttf";
-        public static final String SKINNY_2 = "";
+        public static final String SKINNY_2 = "Tafelschrift.ttf";
     }
 
 }

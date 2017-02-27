@@ -19,6 +19,8 @@
         tools:showIn="@layout/activity_main">
 
         <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefreshlayout"
+            app:refreshing="@{viewModel.isRefreshing}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -26,6 +28,7 @@
                 android:id="@+id/recyclerview"
                 app:items="@{viewModel.deals}"
                 app:ctx="@{fragmentContext}"
+                app:itemClickListener="@{viewModel}"
                 android:paddingTop="25dp"
                 android:clipToPadding="false"
                 android:layout_width="match_parent"

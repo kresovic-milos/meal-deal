@@ -1,15 +1,27 @@
 package com.povio.mealdeal.entities;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
 /**
  * Created by Kresa on 2/21/17.
  */
 
-public class Comment extends BaseEntity {
+@Parcel(Parcel.Serialization.BEAN)
+public class Comment {
 
+    private String uid;
     private Date createdAt;
     private String messageText;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public Date getCreatedAt() {
         return createdAt;

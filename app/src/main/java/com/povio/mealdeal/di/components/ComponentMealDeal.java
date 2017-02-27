@@ -15,6 +15,7 @@ import com.povio.mealdeal.ui.activities.ActivityMain;
 import com.povio.mealdeal.ui.fragments.FragmentDealsMap;
 import com.povio.mealdeal.viewmodel.ViewModelDealsFeed;
 import com.povio.mealdeal.viewmodel.ViewModelMain;
+import com.povio.mealdeal.viewmodel.ViewModelMap;
 
 import javax.inject.Singleton;
 
@@ -43,7 +44,8 @@ public interface ComponentMealDeal {
 
     void inject(AppMealDeal app);
     void inject(ActivityMain activityMain);
-    void inject(ViewModelDealsFeed baseViewModel);
+    void inject(ViewModelDealsFeed viewModelDealsFeed);
+    void inject(ViewModelMap viewModelMap);
     void inject(ViewModelMain viewModelMain);
     void inject(FragmentDealsMap fragmentDealsMap);
 
